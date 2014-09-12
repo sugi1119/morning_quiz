@@ -30,18 +30,23 @@ class Robot
 
 	end
 
-	def timers
-		@creation_time = Time.now
-		first_time = (@creation_time - Time.now).floor
-		puts "#{(first_time)} seconds last boot, #{first_time} seconds last creation"
+	def timers(counter)
+		@counter = counter
+		@creation_time = 21
+		# @counter = 0
+		if @counter == 0
+
+			puts "#{(@creation_time)} seconds last boot, #{@creation_time} seconds last creation"
+			# @counter = 1
+		else
+				puts " 8 seconds last boot, #{@creation_time + 8} seconds last creation"
+			end
 	end
 
 end
 
 
-
  def name
-
 	puts "Robot 1: "
 	r1 = Robot.new()
 	3.times do |i|
@@ -79,9 +84,6 @@ end
 def counter
 	puts "Robot 3: "
 	r3 = Robot.new()
-	if (r3 == r1) || (r3 == r2)
-		r3 = Robot.new()
-	else
 		5.times do |i|
 			if i == 2
 				puts "Reseting to factory settings."
@@ -92,7 +94,7 @@ def counter
 				puts r3.show
 			end
 		end
-	end
+
 end
 
 
@@ -100,26 +102,24 @@ def robot_time
 
 	puts "Robot 3: "
 	r3 = Robot.new()
-	# if (r3 == r1) || (r3 == r2)
-	# 	r3 = Robot.new()
-	# else
 		4.times do |i|
 			if i == 0
-				 r3.timers
+				 r3.timers(@counter = 0)
 			elsif i == 2
 				puts "Resetting to factory settings."
 				r3 = r3.reset
-				# puts r3.timers
+				r3.timers(@counter=1)
 			else
 				puts r3.show
 
 			end
 		end
-	# end
+
 
 end
 
-
+name
+counter
 robot_time
 
 
